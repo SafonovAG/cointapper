@@ -5,6 +5,14 @@ const cors = require('cors')
 const app = express();
 const PORT = 3000;
 let base = {};
+
+setInterval(() => {
+    for(const id in base) {
+        base[id].energy += Math.min(Math.ceil((Date.now() - base[id].date) / 1000), 5000);
+        console.log(id, base[id].energy);
+        base[id].date = Date.now();
+    }
+}, 10_000)
 const bodyParser = require('body-parser')
 // app.use(cors());
 app.use(
@@ -46,6 +54,7 @@ app.post('/set',
         const userId = req.body.userId;
         const data = req.body.data;
         if(userId) {
+            data.date = Date.now()
             base[userId] = data;
             await fs.promises.writeFile('./src/base.json', JSON.stringify(base), 'utf8')
             res.send({status: true});
