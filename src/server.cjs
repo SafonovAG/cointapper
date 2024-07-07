@@ -8,11 +8,11 @@ let base = {};
 
 setInterval(() => {
     for(const id in base) {
-        base[id].energy += Math.min(Math.ceil((Date.now() - base[id].date) / 1000), 5000);
+        base[id].energy += Math.min(Math.ceil((Date.now() - base[id].date) / 100), 5000);
         console.log(id, base[id].energy);
         base[id].date = Date.now();
     }
-}, 10_000)
+}, 5000)
 const bodyParser = require('body-parser')
 // app.use(cors());
 app.use(
