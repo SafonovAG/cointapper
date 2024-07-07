@@ -11,8 +11,8 @@ function App() {
     const [clicks, setClicks] = useState([]);
 
 
-    const pointsToAdd = 1;
-    const energyToReduce = 7;
+    const pointsToAdd = 0.00001;
+    const energyToReduce = 1;
 
     const handleClick = (e) => {
         if (energy - energyToReduce < 0) {
@@ -84,7 +84,7 @@ function App() {
 
                 <div className="fixed top-0 left-0 w-full px-4 pt-8 z-10 flex flex-col items-center text-white">
                     <div className="w-full cursor-pointer">
-                        <div className="bg-[#1f1f1f] text-center py-2 rounded-xl">
+                        <div className="bg-[#1f1f1f] text-center py-2 rounded-xl hidden">
                             <p className="text-lg">Join squad <Arrow size={18} className="ml-0 mb-1 inline-block"/></p>
                         </div>
                     </div>
@@ -94,7 +94,7 @@ function App() {
                     </div>
                     <div className="text-base mt-2 flex items-center">
                         <img src={trophy} width={24} height={24}/>
-                        <span className="ml-1">Gold <Arrow size={18} className="ml-0 mb-1 inline-block"/></span>
+                        <span className="ml-1">Start <Arrow size={18} className="ml-0 mb-1 inline-block"/></span>
                     </div>
                 </div>
 
@@ -105,7 +105,7 @@ function App() {
                                 <img src={highVoltage} width={44} height={44} alt="High Voltage"/>
                                 <div className="ml-2 text-left">
                                     <span className="text-white text-2xl font-bold block">{energy}</span>
-                                    <span className="text-white text-large opacity-75">/ 6500</span>
+                                    <span className="text-white text-large opacity-75">/ 5000</span>
                                 </div>
                             </div>
                         </div>
@@ -113,24 +113,24 @@ function App() {
                             <div className="w-full bg-[#fad258] py-4 rounded-2xl flex justify-around">
                                 <button className="flex flex-col items-center gap-1">
                                     <img src={bear} width={24} height={24} alt="High Voltage"/>
-                                    <span>Frens</span>
+                                    <span>Soon</span>
                                 </button>
                                 <div className="h-[48px] w-[2px] bg-[#fddb6d]"></div>
                                 <button className="flex flex-col items-center gap-1">
                                     <img src={coin} width={24} height={24} alt="High Voltage"/>
-                                    <span>Earn</span>
+                                    <span>Soon</span>
                                 </button>
                                 <div className="h-[48px] w-[2px] bg-[#fddb6d]"></div>
                                 <button className="flex flex-col items-center gap-1">
                                     <img src={rocket} width={24} height={24} alt="High Voltage"/>
-                                    <span>Boosts</span>
+                                    <span>Soon</span>
                                 </button>
                             </div>
                         </div>
                     </div>
                     <div className="w-full bg-[#f9c035] rounded-full mt-4">
                         <div className="bg-gradient-to-r from-[#f3c45a] to-[#fffad0] h-4 rounded-full"
-                             style={{width: `${(energy / 6500) * 100}%`}}></div>
+                             style={{width: `${(energy / 5000) * 100}%`}}></div>
                     </div>
                 </div>
 
@@ -149,7 +149,7 @@ function App() {
                                 }}
                                 onAnimationEnd={() => handleAnimationEnd(click.id)}
                             >
-                                7
+                                1
                             </div>
                         ))}
                     </div>
