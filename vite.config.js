@@ -27,6 +27,6 @@ export default defineConfig({
       },
     },
     host: '0.0.0.0',
-    port: process.env.PORT || 5173,
+    port: process.env.PORT || 80,
   },
 })
