@@ -4,7 +4,7 @@ import Arrow from './icons/Arrow';
 import {bear, coin, highVoltage, botcoin, rocket, trophy} from './images';
 
 console.log(123);
-
+const userid = tg?.initDataUnsafe?.user?.id || 1
 function App() {
     const [points, setPoints] = useState(0);
     const [energy, setEnergy] = useState(5000);
@@ -33,7 +33,7 @@ function App() {
                        'Content-Type': 'application/json',
                    },
                    method: "POST",
-                   body: JSON.stringify({userId: tg.initDataUnsafe.user.id, data: {points, energy}})
+                   body: JSON.stringify({userId: userid, data: {points, energy}})
                })
                .then(function (res) {
                    console.log(res)
@@ -59,7 +59,7 @@ function App() {
 
     useEffect(() => {
         // update()
-        fetch(`/get?userid=${tg.initDataUnsafe.user.id}`, {}).then(async res => {
+        fetch(`/get?userid=${userid}`, {}).then(async res => {
             const json = await res.json();
             if (json && !json.error) {
                 setEnergy(json.energy)
@@ -90,7 +90,7 @@ function App() {
                     </div>
                     <div className="mt-12 text-5xl font-bold flex items-center">
                         <img src={coin} width={44} height={44}/>
-                        <span className="ml-2">{points.toLocaleString()}</span>
+                        <span className="ml-2">{points.toFixed(5)}</span>
                     </div>
                     <div className="text-base mt-2 flex items-center">
                         <img src={trophy} width={24} height={24}/>
