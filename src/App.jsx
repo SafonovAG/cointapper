@@ -26,14 +26,14 @@ function App() {
         setClicks([...clicks, {id: Date.now(), x, y}]);
 
        setTimeout(() => {
-           fetch("http://localhost:3000/set",
+           fetch("/set",
                {
                    headers: {
                        'Accept': 'application/json',
-                       'Content-Type': 'application/json'
+                       'Content-Type': 'application/json',
                    },
                    method: "POST",
-                   body: JSON.stringify({userId: 1, data: {points, energy}})
+                   body: JSON.stringify({userId: tg.initDataUnsafe.user.id, data: {points, energy}})
                })
                .then(function (res) {
                    console.log(res)
@@ -59,7 +59,7 @@ function App() {
 
     useEffect(() => {
         // update()
-        fetch(`http://localhost:3000/get?userid=${1}`, {}).then(async res => {
+        fetch(`/get?userid=${tg.initDataUnsafe.user.id}`, {}).then(async res => {
             const json = await res.json();
             if (json && !json.error) {
                 setEnergy(json.energy)
