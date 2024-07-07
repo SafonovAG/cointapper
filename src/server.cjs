@@ -12,7 +12,7 @@ setInterval(() => {
         console.log(id, base[id].energy);
         base[id].date = Date.now();
     }
-}, 5000)
+}, 60000)
 const bodyParser = require('body-parser')
 // app.use(cors());
 app.use(
