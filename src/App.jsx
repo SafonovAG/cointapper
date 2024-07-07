@@ -12,7 +12,7 @@ function App() {
 
 
     const pointsToAdd = 0.00001;
-    const energyToReduce = 1;
+    const energyToReduce = 10;
 
     const handleClick = (e) => {
         if (energy - energyToReduce < 0) {
@@ -67,8 +67,8 @@ function App() {
             }
         }).catch(null)
         const interval = setInterval(() => {
-            setEnergy((prevEnergy) => Math.min(prevEnergy + 1, 5000));
-        }, 100); // Restore 1 energy point every 100 milliseconds
+            setEnergy((prevEnergy) => Math.min(prevEnergy + 5, 5000));
+        }, 1000); // Restore 1 energy point every 100 milliseconds
 
         return () => clearInterval(interval); // Clear interval on component unmount
     }, []);
